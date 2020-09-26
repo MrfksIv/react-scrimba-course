@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Card from './components/Card';
+import CTA from "./components/CallToAction";
+import {withExtraPropAdded} from "./components/withExtraPropHOC";
+import Menu from "./components/ToggableMenuV3";
 
-function App() {
+function App(props: any) {
+    console.log(props)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <CTA border='10px solid orange'>
+            <h1>This is a CTA with a child of h1</h1>
+        </CTA>
+        <Card cardColor="red" />
+        <Card cardColor="blue" />
+        <Card cardColor="green" />
+        <Card width={200}/>
+        <Menu />
+
     </div>
   );
 }
 
-export default App;
+export default withExtraPropAdded(App);
