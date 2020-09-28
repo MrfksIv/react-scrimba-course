@@ -1,9 +1,13 @@
-import {Action, ActionNames} from './actions';
+import { Action, ActionNames } from './actions';
+import { ThunkAction } from "redux-thunk";
 
 
-export function incrementCount(): Action {
-    return {
-        type: ActionNames.INCREMENT_COUNT
+export function incrementCount(): ThunkAction<any, any, any, any> {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch({type: ActionNames.INCREMENT_COUNT})
+        }, 1500)
+
     }
 }
 

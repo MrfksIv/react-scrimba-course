@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Card from './components/Card';
 import CTA from "./components/CallToAction";
-import {withExtraPropAdded} from "./components/withExtraPropHOC";
+import { withExtraPropAdded } from "./components/withExtraPropHOC";
 import Menu from "./components/ToggableMenuV4";
 import Counter from './components/Counter';
+import CounterRedux from './components/CounterRedux';
 import TypingGame from './components/TypingGame';
 import { Link, Switch, Route } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App(props: any) {
             <Link to='/game'>Typing Game</Link>
             <Link to='/card'>Cards</Link>
             <Link to='/counter'>Counter</Link>
+            <Link to='/counter2'>Counter</Link>
         </nav>
 
         <CTA border='10px solid orange'>
@@ -30,7 +32,8 @@ function App(props: any) {
                 <h1>Welcome!</h1>
             </Route>
             <Route path='/menu' component={Menu} />
-            <Route path='/counter' render={() => <Counter />} />
+            <Route exact path='/counter' render={() => <Counter />} />
+            <Route path='/counter2' render={() => <CounterRedux />} />
             <Route path='/card'>
                 <Card cardColor="red" />
                 <Card cardColor="blue" />

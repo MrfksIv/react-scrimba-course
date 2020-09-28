@@ -1,9 +1,9 @@
-import * as redux from 'redux';
-import {createStore} from 'redux';
-import {countReducer} from './count';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import { countReducer } from './count';
 
 
-const store = createStore(countReducer);
+const store = createStore(countReducer, applyMiddleware(thunk));
 store.subscribe(() => console.log(store.getState()))
 
 export default store;
