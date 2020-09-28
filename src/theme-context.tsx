@@ -1,6 +1,6 @@
 import React, {createContext, PropsWithChildren, useState} from "react";
 
-const { Provider, Consumer} = createContext({
+const ThemeContext = createContext({
     theme: 'light',
     toggleTheme: () => console.log('Not implemented!')
 })
@@ -11,10 +11,10 @@ const ThemeContextProvider = (props: PropsWithChildren<any>) => {
 
     const toggleTheme = () => setTheme( theme === 'light' ? 'dark' : 'light');
     return (
-        <Provider value={{theme, toggleTheme}}>
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
             {props.children}
-        </Provider>
+        </ThemeContext.Provider>
     );
 }
 
-export { ThemeContextProvider, Consumer as ThemeContextConsumer };
+export { ThemeContextProvider, ThemeContext };

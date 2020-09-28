@@ -1,5 +1,5 @@
-import React from 'react';
-import { ThemeContextConsumer } from "../theme-context";
+import React, {useContext} from 'react';
+import { ThemeContext } from '../theme-context';
 
 /**
  * Notice the use of Card.defaultProps to assign default value properties
@@ -13,6 +13,7 @@ interface CardProps {
 
 
 function Card(props: CardProps) {
+    const context = useContext(ThemeContext)
     const styles = {
 
         backgroundColor: props.cardColor,
@@ -21,13 +22,9 @@ function Card(props: CardProps) {
     }
 
     return (
-        <ThemeContextConsumer>
-            {
-                ({theme}) => (
-                    <div className={`${theme}-theme`} style={styles}></div>
-                )
-            }
-        </ThemeContextConsumer>
+
+        <div className={`${context.theme}-theme`} style={styles}></div>
+
 
     )
 }

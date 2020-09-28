@@ -1,5 +1,5 @@
-import React, {PropsWithChildren} from 'react';
-import { ThemeContextConsumer } from "../theme-context";
+import React, {PropsWithChildren, useContext} from 'react';
+import { ThemeContext } from "../theme-context";
 /**
  * All components have this implicit property called 'children' as part of their properties.
  * This is basically anything that comes between opening and closing tags of the component.
@@ -13,16 +13,10 @@ interface CtaProps {
     border: string;
 }
 function CTA(props: PropsWithChildren<CtaProps>) {
-
+    const context = useContext(ThemeContext);
     return (
-        <ThemeContextConsumer>
-            {
-                ({theme}) => (
-                    <div className={`${theme}-theme`} style={{'border': props.border}}>{props.children}</div>
-                )
-            }
-        </ThemeContextConsumer>
 
+        <div className={`${context.theme}-theme`} style={{'border': props.border}}>{props.children}</div>
     )
 }
 
